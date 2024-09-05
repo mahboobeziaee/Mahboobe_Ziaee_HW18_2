@@ -1,0 +1,40 @@
+﻿@using Mahboobe_Ziaee_HW18.Models.Product
+
+@model Product_F
+
+<h1>Edit Product</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="product_id" /> 
+    <input type="hidden" asp-for="store_id" /> 
+   
+    <div style="margin-bottom: 20px;"> 
+        <label asp-for="product_name" style="display: block; margin-bottom: 5px;"></label>
+        <input asp-for="product_name"   required style="width: 100%; padding: 10px;" />
+        
+        <span asp-validation-for="product_name" class="text-danger"></span>
+    </div>
+
+    <div style="margin-bottom: 20px;"> 
+        <label asp-for="model_year" style="display: block; margin-bottom: 5px;"></label>
+        <input asp-for="model_year"  type="number" min="1900" max="2100" required style="width: 100%; padding: 10px;" />
+        <span asp-validation-for="model_year" class="text-danger"></span>
+    </div>
+    
+    <div style="margin-bottom: 20px;"> 
+        <label asp-for="list_price" style="display: block; margin-bottom: 5px;"></label>
+        <input asp-for="list_price"  type="number" step="0.01" required style="width: 100%; padding: 10px;" />
+        <span asp-validation-for="list_price" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit" style="padding: 10px 20px;">Save</button>
+    </div>
+</form>
+
+
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

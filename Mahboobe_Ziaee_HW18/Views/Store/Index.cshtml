@@ -1,0 +1,56 @@
+﻿@using Mahboobe_Ziaee_HW18.Models.Store
+@model List<StoreViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store List</title>
+</head>
+<body>
+    <h1>Store List</h1>
+
+    <form method="get" asp-action="Index" asp-controller="Store">
+        <div class="mb-3">
+            <label for="storeZipInput" class="form-label">Zip Code</label>
+            <input type="text" name="ZipCod" class="form-control" id="storeZipInput" />
+        </div>
+        <div class="mb-3">
+            <label for="storeNameInput" class="form-label">Store Name</label>
+            <input type="text" name="storeName" class="form-control" id="storeNameInput" />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table style="width:100%; border-collapse:collapse; margin-top: 20px;">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Street</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Zip Code</th>
+                <th scope="col">Details</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var store in Model)
+            {
+                <tr style="border-bottom:1px solid #ddd;">
+                    <td>@store.store_id</td>
+                    <td>@store.store_name</td>
+                    <td>@store.phone</td>
+                    <td>@store.email</td>
+                    <td>@store.street</td>
+                    <td>@store.city</td>
+                    <td>@store.state</td>
+                    <td>@store.zip_code</td>
+                    <td><a href="@Url.Action("Products", "Store", new { store_Id = store.store_id })">Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
